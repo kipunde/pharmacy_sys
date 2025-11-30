@@ -65,13 +65,13 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required|min:10|max:255',
+            'name'=>'required|min:3',
             'product'=>'required',
             'email'=>'nullable|email|string',
             'phone'=>'nullable|min:10|max:20',
-            'company'=>'nullable|max:200|required',
-            'address'=>'nullable|required|max:200',
-            'comment' =>'nullable|max:255',
+            'company'=>'nullable|min:3',
+            'address'=>'nullable|required|min:3',
+            'comment' =>'nullable|min:3',
         ]);
         Supplier::create([
             'name'=>$request->name,
