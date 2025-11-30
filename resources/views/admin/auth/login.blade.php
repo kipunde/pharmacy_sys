@@ -1,7 +1,7 @@
 @extends('admin.layouts.plain')
 
 @section('content')
-<h1>Pharmacy System</h1>
+<h1>Canaan Dental Clinic</h1>
 <p class="account-subtitle">Login Panel</p>
 
 @if (session('login_error'))
