@@ -26,7 +26,14 @@ class CategoryController extends Controller
                         return date_format(date_create($category->created_at),"d M,Y");
                     })
                     ->addColumn('action',function ($row){
-                        $editbtn = '<a data-id="'.$row->id.'" data-name="'.$row->name.'" href="javascript:void(0)" class="editbtn"><button class="btn btn-info"><i class="fas fa-edit"></i></button></a>';
+                        $editbtn = '<a 
+                        data-id="'.$row->id.'" 
+                        data-name="'.$row->name.'" 
+                        data-description="'.htmlspecialchars($row->description, ENT_QUOTES).'" 
+                        href="javascript:void(0)" 
+                        class="editbtn">
+                        <button class="btn btn-info"><i class="fas fa-edit"></i></button>
+                        </a>';
                         $deletebtn = '<a data-id="'.$row->id.'" data-route="'.route('categories.destroy',$row->id).'" href="javascript:void(0)" id="deletebtn"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>';
                         if(!auth()->user()->hasPermissionTo('edit-category')){
                             $editbtn = '';
@@ -57,6 +64,7 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name'=>'required|max:100',
+             'description' => 'nullable|min:5',
         ]);
         Category::create($request->all());
         $notification=array("Category has been added");
@@ -79,6 +87,7 @@ class CategoryController extends Controller
         $category = Category::find($request->id);
         $category->update([
             'name'=>$request->name,
+            'description'=>$request->description,
         ]);
         $notification = notify("Category has been updated");
         return back()->with($notification);

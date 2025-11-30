@@ -21,7 +21,7 @@
 				@endcan
 				@can('view-category')
 				<li class="{{ route_is('categories.*') ? 'active' : '' }}"> 
-				<a href="{{route('categories.index')}}"><i class="fe fe-layout"></i> <span>Categories</span></a>
+				<a href="{{route('categories.index')}}"><i class="fe fe-layout"></i> <span>Product Categories</span></a>
 				</li>
 				@endcan
 
@@ -37,7 +37,7 @@
 
 				@can('view-purchase')
 				<li class="submenu">
-				<a href="#"><i class="fe fe-star-o"></i> <span> Purchase</span> <span class="fas fa-chevron-down"></span></a>
+				<a href="#"><i class="fe fe-star-o"></i> <span> Purchase Product</span> <span class="fas fa-chevron-down"></span></a>
 				<ul style="display: none;">
 				<li><a class="{{ route_is('purchases.*') ? 'active' : '' }}" href="{{route('purchases.index')}}">Purchase</a></li>
 				@can('create-purchase')

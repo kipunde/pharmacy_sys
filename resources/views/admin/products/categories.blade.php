@@ -8,10 +8,10 @@
 
 @push('page-header')
 <div class="col-sm-7 col-auto">
-	<h3 class="page-title">Categories</h3>
+	<h3 class="page-title">Product Categories</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Categories</li>
+		<li class="breadcrumb-item active">Product Categories</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
@@ -29,6 +29,7 @@
 						<thead>
 							<tr style="boder:1px solid black;">
 								<th>Name</th>
+								<th>Description</th>
 								<th>Created date</th>
 								<th class="text-center action-btn">Actions</th>
 							</tr>
@@ -48,7 +49,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Add Category</h5>
+				<h5 class="modal-title">Add Product Category</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -59,9 +60,13 @@
 					<div class="row form-row">
 						<div class="col-12">
 							<div class="form-group">
-								<label>Category</label>
+								<label>Product Category Name</label>
 								<input type="text" name="name" class="form-control">
 							</div>
+							 <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" class="form-control" placeholder="Enter description" rows="3"></textarea>
+                    </div>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-success btn-block">Save Changes</button>
@@ -93,6 +98,10 @@
 								<label>Category</label>
 								<input type="text" class="form-control edit_name" name="name">
 							</div>
+							<div class="form-group">
+							<label>Description</label>
+							<textarea class="form-control" name="description" id="edit_description" rows="3"></textarea>
+							</div>
 						</div>
 						
 					</div>
@@ -114,6 +123,7 @@
             ajax: "{{route('categories.index')}}",
             columns: [
                 {data: 'name', name: 'name'},
+                {data: 'description', name: 'description'},
                 {data: 'created_at',name: 'created_at'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
@@ -124,6 +134,7 @@
             var name = $(this).data('name');
             $('#edit_id').val(id);
             $('.edit_name').val(name);
+            $('#edit_description').val(description);
         });
         //
     });
