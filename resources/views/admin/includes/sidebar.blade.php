@@ -10,37 +10,58 @@
 				<li class="{{ route_is('dashboard') ? 'active' : '' }}"> 
 					<a href="{{route('dashboard')}}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 				</li>
-				
+
+				<!-- Pharmacy Setup -->
+				@can('view-pharmacy')
+				<li class="submenu">
+				<a href="#"><i class="fe fe-cart"></i> <span>Pharmacy Setup</span> <span class="fas fa-chevron-down"></span></a>
+				<ul style="display: none;">
+				@can('view-pharmacy-types')
+				<li><a class="{{ route_is('pharmacy_types.*') ? 'active' : '' }}" href="{{ route('pharmacy_types.index') }}">Pharmacy Types</a></li>
+				@endcan
 				@can('view-category')
 				<li class="{{ route_is('categories.*') ? 'active' : '' }}"> 
-					<a href="{{route('categories.index')}}"><i class="fe fe-layout"></i> <span>Categories</span></a>
+				<a href="{{route('categories.index')}}"><i class="fe fe-layout"></i> <span>Categories</span></a>
+				</li>
+				@endcan
+
+				@can('view-supplier')
+				<li class="submenu">
+				<a href="#"><i class="fe fe-user"></i> <span> Supplier</span> <span class="fas fa-chevron-down"></span></a>
+				<ul style="display: none;">
+				<li><a class="{{ route_is('suppliers.*') ? 'active' : '' }}" href="{{route('suppliers.index')}}">Supplier</a></li>
+				@can('create-supplier')<li><a class="{{ route_is('suppliers.create') ? 'active' : '' }}" href="{{route('suppliers.create')}}">Add Supplier</a></li>@endcan
+				</ul>
 				</li>
 				@endcan
 
 				@can('view-purchase')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-star-o"></i> <span> Purchase</span> <span class="fas fa-chevron-down"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ route_is('purchases.*') ? 'active' : '' }}" href="{{route('purchases.index')}}">Purchase</a></li>
-						@can('create-purchase')
-						<li><a class="{{ route_is('purchases.create') ? 'active' : '' }}" href="{{route('purchases.create')}}">Add Purchase</a></li>
-						@endcan
-					</ul>
+				<a href="#"><i class="fe fe-star-o"></i> <span> Purchase</span> <span class="fas fa-chevron-down"></span></a>
+				<ul style="display: none;">
+				<li><a class="{{ route_is('purchases.*') ? 'active' : '' }}" href="{{route('purchases.index')}}">Purchase</a></li>
+				@can('create-purchase')
+				<li><a class="{{ route_is('purchases.create') ? 'active' : '' }}" href="{{route('purchases.create')}}">Add Purchase</a></li>
+				@endcan
+				</ul>
 				</li>
 				@endcan
-				
 				@can('view-products')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-document"></i> <span> Products</span> <span class="fas fa-chevron-down"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ route_is(('products.*')) ? 'active' : '' }}" href="{{route('products.index')}}">Products</a></li>
-						@can('create-product')<li><a class="{{ route_is('products.create') ? 'active' : '' }}" href="{{route('products.create')}}">Add Product</a></li>@endcan
-						@can('view-outstock-products')<li><a class="{{ route_is('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Out-Stock</a></li>@endcan
-						@can('view-expired-products')<li><a class="{{ route_is('expired') ? 'active' : '' }}" href="{{route('expired')}}">Expired</a></li>@endcan
-					</ul>
+				<a href="#"><i class="fe fe-document"></i> <span> Products</span> <span class="fas fa-chevron-down"></span></a>
+				<ul style="display: none;">
+				<li><a class="{{ route_is(('products.*')) ? 'active' : '' }}" href="{{route('products.index')}}">Products</a></li>
+				@can('create-product')<li><a class="{{ route_is('products.create') ? 'active' : '' }}" href="{{route('products.create')}}">Add Product</a></li>@endcan
+				@can('view-outstock-products')<li><a class="{{ route_is('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Out-Stock</a></li>@endcan
+				@can('view-expired-products')<li><a class="{{ route_is('expired') ? 'active' : '' }}" href="{{route('expired')}}">Expired</a></li>@endcan
+				</ul>
 				</li>
 				@endcan
-				
+
+				</ul>
+				</li>
+				@endcan
+				<!-- ending here -->
 				
 				@can('view-sales')
 				<li class="submenu">
@@ -54,16 +75,6 @@
 				</li>
 				@endcan
 				
-				@can('view-supplier')
-				<li class="submenu">
-					<a href="#"><i class="fe fe-user"></i> <span> Supplier</span> <span class="fas fa-chevron-down"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ route_is('suppliers.*') ? 'active' : '' }}" href="{{route('suppliers.index')}}">Supplier</a></li>
-						@can('create-supplier')<li><a class="{{ route_is('suppliers.create') ? 'active' : '' }}" href="{{route('suppliers.create')}}">Add Supplier</a></li>@endcan
-					</ul>
-				</li>
-				@endcan
-
 				@can('view-reports')
 				<li class="submenu">
 					<a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="fas fa-chevron-down"></span></a>
