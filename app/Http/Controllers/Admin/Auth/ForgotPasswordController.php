@@ -2,29 +2,37 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $title = 'forgot password';
         return view('admin.auth.password.email', compact('title'));
     }
 
-    public function requestEmail(Request $request){
-        $this->validate($request,[
-            'email' => 'required|email'
+    public function requestEmail(Request $request)
+    {
+        // Validate inputs
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
         ]);
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-        return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
+
+        // Find user by email
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'Email not found']);
+        }
+
+        // Update password
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return back()->with('status', 'Password updated successfully!');
     }
-
-
-    
 }

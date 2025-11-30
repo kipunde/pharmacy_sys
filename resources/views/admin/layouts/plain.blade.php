@@ -31,10 +31,15 @@
                 <div class="loginbox">
                     <!-- <div class="login-left"> -->
                     <div class="">
-                        <img class="img-fluid" src="{{!empty(AppSettings::get('logo')) ? asset('storage/'.AppSettings::get('logo')): asset('assets/img/pharmafrnt.jpg')}}" alt="Logo">
+                        <img class="img-fluid" src="{{!empty(AppSettings::get('logo')) ? asset('storage/'.AppSettings::get('logo')): asset('assets/img/pharmafrnt.jpg')}}" alt="Logo" style="width: 500px; height: auto;">
                     </div>
                     <div class="login-right">
                         <div class="login-right-wrap">
+                            
+                            {{-- Success Message --}}
+                            @if (session('status'))
+                                <x-alerts.success :message="session('status')" />
+                            @endif
                             @if ($errors->any())
                                 @foreach ($errors->all() as $error)
                                     <x-alerts.danger :error="$error" />
