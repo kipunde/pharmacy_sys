@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PharmacyTypeController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PurchaseController;
@@ -44,8 +45,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::put('permission',[PermissionController::class,'update'])->name('permissions.update');
     Route::resource('roles',RoleController::class);
     Route::resource('suppliers',SupplierController::class);
+
+   // pharmacy type
+     Route::resource('pharmacy_types',PharmacyTypeController::class)->only(['index','store','destroy']);
+    Route::put('pharmacy_types',[PharmacyTypeController::class,'update'])->name('pharmacy_types.update');
+
+
     Route::resource('categories',CategoryController::class)->only(['index','store','destroy']);
     Route::put('categories',[CategoryController::class,'update'])->name('categories.update');
+
+
     Route::resource('purchases',PurchaseController::class)->except('show');
     Route::get('purchases/reports',[PurchaseController::class,'reports'])->name('purchases.report');
     Route::post('purchases/reports',[PurchaseController::class,'generateReport']);

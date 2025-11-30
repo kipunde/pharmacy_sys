@@ -20,6 +20,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\DashboardController' => $baseDir . '/app/Http/Controllers/Admin/DashboardController.php',
     'App\\Http\\Controllers\\Admin\\NotificationController' => $baseDir . '/app/Http/Controllers/Admin/NotificationController.php',
     'App\\Http\\Controllers\\Admin\\PermissionController' => $baseDir . '/app/Http/Controllers/Admin/PermissionController.php',
+    'App\\Http\\Controllers\\Admin\\PharmacyTypeController' => $baseDir . '/app/Http/Controllers/Admin/PharmacyTypeController.php',
     'App\\Http\\Controllers\\Admin\\ProductController' => $baseDir . '/app/Http/Controllers/Admin/ProductController.php',
     'App\\Http\\Controllers\\Admin\\PurchaseController' => $baseDir . '/app/Http/Controllers/Admin/PurchaseController.php',
     'App\\Http\\Controllers\\Admin\\RoleController' => $baseDir . '/app/Http/Controllers/Admin/RoleController.php',
