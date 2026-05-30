@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class AddTypeToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',120);
-             $table->string('type',80)->nullable();
-             $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('categories', function (Blueprint $table) {
+        $table->enum('type', ['product', 'service', 'accommodation'])->default('product')->after('name');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::table('categories', function (Blueprint $table) {
+        $table->dropColumn('type');
+        });
     }
 }

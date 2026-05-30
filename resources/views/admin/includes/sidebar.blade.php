@@ -14,11 +14,13 @@
 				<!-- Pharmacy Setup -->
 				@can('view-pharmacy')
 				<li class="submenu">
-				<a href="#"><i class="fe fe-cart"></i> <span>Pharmacy Setup</span> <span class="fas fa-chevron-down"></span></a>
+				<a href="#"><i class="fe fe-cart"></i> <span>Product Setup </span> <span class="fas fa-chevron-down"></span></a>
 				<ul style="display: none;">
+				<!--	
 				@can('view-pharmacy-types')
-				<li><a class="{{ route_is('pharmacy_types.*') ? 'active' : '' }}" href="{{ route('pharmacy_types.index') }}">Pharmacy Types</a></li>
+				<li><a class="{{ route_is('pharmacy_types.*') ? 'active' : '' }}" href="{{ route('pharmacy_types.index') }}">Services Types</a></li>
 				@endcan
+					-->
 				@can('view-category')
 				<li class="{{ route_is('categories.*') ? 'active' : '' }}"> 
 				<a href="{{route('categories.index')}}"><i class="fe fe-layout"></i> <span>Product Categories</span></a>

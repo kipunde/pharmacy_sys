@@ -681,6 +681,7 @@ class ComposerStaticInit353d1bfb2b817e0d7bdb31b137344819
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Listeners\\NotifyStockAlert' => __DIR__ . '/../..' . '/app/Listeners/NotifyStockAlert.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\PharmacyType' => __DIR__ . '/../..' . '/app/Models/PharmacyType.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\Purchase' => __DIR__ . '/../..' . '/app/Models/Purchase.php',
         'App\\Models\\Sale' => __DIR__ . '/../..' . '/app/Models/Sale.php',

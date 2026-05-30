@@ -29,6 +29,7 @@ class CategoryController extends Controller
                         $editbtn = '<a 
                         data-id="'.$row->id.'" 
                         data-name="'.$row->name.'" 
+                        data-type="'.$row->type.'" 
                         data-description="'.htmlspecialchars($row->description, ENT_QUOTES).'" 
                         href="javascript:void(0)" 
                         class="editbtn">
@@ -64,6 +65,7 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name'=>'required|max:100',
+            'type'=>'required',
              'description' => 'nullable|min:5',
         ]);
         Category::create($request->all());
@@ -88,6 +90,7 @@ class CategoryController extends Controller
         $category->update([
             'name'=>$request->name,
             'description'=>$request->description,
+            'type'=>$request->type,
         ]);
         $notification = notify("Category has been updated");
         return back()->with($notification);

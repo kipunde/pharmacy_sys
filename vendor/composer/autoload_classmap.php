@@ -40,6 +40,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Listeners\\NotifyStockAlert' => $baseDir . '/app/Listeners/NotifyStockAlert.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\PharmacyType' => $baseDir . '/app/Models/PharmacyType.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\Purchase' => $baseDir . '/app/Models/Purchase.php',
     'App\\Models\\Sale' => $baseDir . '/app/Models/Sale.php',
